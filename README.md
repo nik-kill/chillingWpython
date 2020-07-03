@@ -1,3 +1,7 @@
-# Black_HAT_python
+# Black HAT python
 
+THE NETWORK: BASICS
 >TCP Client
+>UDP Client
+>TCP Server
+>Replacing Netcat
