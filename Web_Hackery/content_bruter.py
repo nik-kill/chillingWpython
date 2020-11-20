@@ -3,9 +3,9 @@ import threading
 import Queue
 import urllib
 
-threads = 50
-target_url = "https://testphp.vulnweb.com"
-wordlist_file = "/tmp/all.txt" #from SVN digger
+threads = 5
+target_url = "https://www.bing.com"
+wordlist_file = "common.txt"
 resume = None
 user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:19.0) Gecko/20100101Firefox/19.0"
 
@@ -30,7 +30,7 @@ def build_wordlist(wordlist_file):
             words.put(word)
     return words
 
-def dir_brutet(word_queue, extension=None):
+def dir_bruter(word_queue, extension=None):
     while not word_queue.empty():
         attempt = word_queue.get()
         attempt_list = []
@@ -58,7 +58,7 @@ def dir_brutet(word_queue, extension=None):
                 response = urllib2.urlopen(r)
                 if len(response.read()):
                     print "[%d] =>  %s" % (response.code, url)
-            except urllib2.URRLError,e:
+            except urllib2.URLError,e:
                 if hasattr(e, 'code') and e.code != 404:
                     print("!!! %d => %s" % (e.code, url))
                 pass
